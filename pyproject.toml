@@ -7,7 +7,7 @@ name = "hexlet-code"
 version = "0.1.0"
 description = "Compares two configuration files and shows a difference."
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.12"
 dependencies = []
 
 [project.scripts]
