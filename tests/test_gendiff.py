@@ -1,3 +1,4 @@
+import json
 import os
 
 from gendiff import generate_diff
@@ -58,3 +59,12 @@ def test_generate_diff_plain():
     ]
     result_lines = result.strip().split('\n')
     assert result_lines == expected_lines
+
+def test_generate_diff_json():
+    result = generate_diff('tests/fixtures/file1.json', 'tests/fixtures/file2.json', 'json')
+    # Проверим, что это валидный JSON и содержит ключевые поля
+    parsed = json.loads(result)
+    assert isinstance(parsed, list)
+    keys = [item['key'] for item in parsed]
+    assert 'common' in keys
+    assert 'group2' in keys
