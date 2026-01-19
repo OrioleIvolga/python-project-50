@@ -45,3 +45,39 @@ gendiff file1.json file2.json
   + verbose: true
 }
 ```
+
+Сравнение двух YAML-файлов
+
+Файл1 `file1.yml`
+```yml
+host: hexlet.io
+proxy: 123.234.53.22
+timeout: 50
+follow: false
+```
+
+Файл2 `file2.yml`
+```yml
+host: hexlet.io
+timeout: 20
+verbose: true
+```
+
+Запуск утилиты
+
+```bash
+gendiff file1.yml file2.yml
+```
+
+Результат
+
+```diff
+{
+  - follow: false
+    host: hexlet.io
+  - proxy: 123.234.53.22
+  - timeout: 50
+  + timeout: 20
+  + verbose: true
+}
+```

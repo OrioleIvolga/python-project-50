@@ -1,4 +1,4 @@
-import json
+from .parsers import parse_file
 
 
 def _format_value(value):
@@ -27,13 +27,11 @@ def _build_line(key, value, status):
 
 def generate_diff(file1_path, file2_path, format_name='stylish'):
     """
-    Генерирует diff между двумя плоскими JSON-файлами.
+    Генерирует diff между двумя плоскими JSON/YAML-файлами.
     Возвращает строку в формате 'stylish'.
     """
-    with open(file1_path) as f1:
-        data1 = json.load(f1)
-    with open(file2_path) as f2:
-        data2 = json.load(f2)
+    data1 = parse_file(file1_path)
+    data2 = parse_file(file2_path)
 
     all_keys = sorted(set(data1.keys()) | set(data2.keys()))
     lines = []
