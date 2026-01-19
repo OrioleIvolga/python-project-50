@@ -33,3 +33,10 @@ def test_generate_diff_yaml():
   + verbose: true
 }"""
     assert result == expected
+
+def test_generate_diff_nested():
+    result = generate_diff('tests/fixtures/file1.json', 'tests/fixtures/file2.json')
+    # Проверьте начало вывода
+    assert "common: {" in result
+    assert "  + follow: false" in result
+    assert "  - setting2: 200" in result
