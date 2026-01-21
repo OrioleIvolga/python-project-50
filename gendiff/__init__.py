@@ -5,7 +5,10 @@ from .parsers import parse_file
 
 def generate_diff(file1_path, file2_path, format_name='stylish'):
     if format_name not in FORMATTERS:
-        raise ValueError(f"Unsupported format: {format_name}. Supported: {list(FORMATTERS.keys())}")
+        raise ValueError(
+            f"Unsupported format: {format_name}. "
+            f"Supported: {list(FORMATTERS.keys())}"
+            )
 
     data1 = parse_file(file1_path)
     data2 = parse_file(file2_path)

@@ -35,15 +35,23 @@ def test_generate_diff_yaml():
 }"""
     assert result == expected
 
+
 def test_generate_diff_nested():
-    result = generate_diff('tests/fixtures/file1.json', 'tests/fixtures/file2.json')
+    result = generate_diff(
+        'tests/fixtures/file1.json',
+        'tests/fixtures/file2.json'
+        )
     # Проверьте начало вывода
     assert "common: {" in result
     assert "  + follow: false" in result
     assert "  - setting2: 200" in result
 
+
 def test_generate_diff_plain():
-    result = generate_diff('tests/fixtures/file1.json', 'tests/fixtures/file2.json', 'plain')
+    result = generate_diff(
+        'tests/fixtures/file1.json',
+        'tests/fixtures/file2.json', 'plain'
+        )
     expected_lines = [
         "Property 'common.follow' was added with value: false",
         "Property 'common.setting2' was removed",
@@ -60,8 +68,12 @@ def test_generate_diff_plain():
     result_lines = result.strip().split('\n')
     assert result_lines == expected_lines
 
+
 def test_generate_diff_json():
-    result = generate_diff('tests/fixtures/file1.json', 'tests/fixtures/file2.json', 'json')
+    result = generate_diff(
+        'tests/fixtures/file1.json',
+        'tests/fixtures/file2.json', 'json'
+        )
     # Проверим, что это валидный JSON и содержит ключевые поля
     parsed = json.loads(result)
     assert isinstance(parsed, list)
