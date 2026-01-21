@@ -1,31 +1,42 @@
+# gendiff/formatters/stylish.py
 from ..utils import format_value
 
 
-def format_stylish(diff_tree: list, depth=0) -> str:
-    indent_size = 4
-    current_indent = " " * (depth * indent_size)
+def format_stylish(diff_tree, depth=0):
+    """
+    Formats the diff tree into 'stylish' plain-text representation.
+
+    Args:
+        diff_tree: List of diff nodes (each is a dict with 'key', 'type', and 'value')
+        depth: Current nesting level for indentation
+
+    Returns:
+        Formatted string representing the diff.
+    """
+    current_indent = "    " * depth
     lines = ["{"]
 
     for node in diff_tree:
         key = node["key"]
-        match node["type"]:
-            case "nested":
-                nested_lines = format_stylish(node["children"], depth + 1)
-                lines.append(f"{current_indent}    {key}: {nested_lines}")
-            case "unchanged":
-                value = format_value(node["value"])
-                lines.append(f"{current_indent}    {key}: {value}")
-            case "added":
-                value = format_value(node["value"])
-                lines.append(f"{current_indent}  + {key}: {value}")
-            case "removed":
-                value = format_value(node["value"])
-                lines.append(f"{current_indent}  - {key}: {value}")
-            case "changed":
-                old_val = format_value(node["value"]["old"])
-                new_val = format_value(node["value"]["new"])
-                lines.append(f"{current_indent}  - {key}: {old_val}")
-                lines.append(f"{current_indent}  + {key}: {new_val}")
+        node_type = node["type"]
+
+        if node_type == "nested":
+            nested_result = format_stylish(node["children"], depth + 1)
+            lines.append(f"{current_indent}    {key}: {nested_result}")
+        elif node_type == "unchanged":
+            value_str = format_value(node["value"], depth + 1)
+            lines.append(f"{current_indent}    {key}: {value_str}")
+        elif node_type == "added":
+            value_str = format_value(node["value"], depth + 1)
+            lines.append(f"{current_indent}  + {key}: {value_str}")
+        elif node_type == "removed":
+            value_str = format_value(node["value"], depth + 1)
+            lines.append(f"{current_indent}  - {key}: {value_str}")
+        elif node_type == "changed":
+            old_str = format_value(node["value"]["old"], depth + 1)
+            new_str = format_value(node["value"]["new"], depth + 1)
+            lines.append(f"{current_indent}  - {key}: {old_str}")
+            lines.append(f"{current_indent}  + {key}: {new_str}")
 
     lines.append(current_indent + "}")
     return "\n".join(lines)
