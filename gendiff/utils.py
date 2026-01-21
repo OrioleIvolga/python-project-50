@@ -17,7 +17,7 @@ def format_value(value, depth=0):
 
     # Обработка специальных значений
     if value is None:
-        return ''  # ← ВАЖНО: не 'null', а пустая строка!
+        return 'null'  # ← ВСЕГДА 'null'
     if isinstance(value, bool):
         return str(value).lower()  # true / false
     return str(value)
