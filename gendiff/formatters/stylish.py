@@ -7,7 +7,8 @@ def format_stylish(diff_tree, depth=0):
     Formats the diff tree into 'stylish' plain-text representation.
 
     Args:
-        diff_tree: List of diff nodes (each is a dict with 'key', 'type', and 'value')
+        diff_tree: List of diff nodes.
+         Each is a dict with 'key', 'type', and 'value'.
         depth: Current nesting level for indentation
 
     Returns:
