@@ -1,45 +1,113 @@
-# Byte-compiled / optimized / DLL files
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
 
-# C extensions
-*.so
+# Virtual environments
+venv/
+ENV/
+.env
+.venv/
 
-# Distribution / packaging
-.Python
+# Build artifacts
 build/
-develop-eggs/
 dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-pip-wheel-metadata/
-share/python-wheels/
 *.egg-info/
-.installed.cfg
-*.egg
 
-# Pytest
-.pytest_cache/
-.coverage
+# Coverage reports
 htmlcov/
+.tox/
+.cache/
+nosetests.xml
 coverage.xml
 
-# IDE
+# IDE / Editor files
 .vscode/
 .idea/
 *.swp
 *.swo
 
-# Environments
-.env
-venv/
-ENV/
-env/
+# Logs and temp files
+logs/
+*.log
+*.tmp
+
+# PyInstaller
+# Usually these are created by a python script from a template
+# The actual files may have different names depending on the application
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.cache/
+nosetests.xml
+coverage.xml
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyInstaller
+# Usually these are created by a python script from a template
+# The actual files may have different names depending on the application
+*.manifest
+*.spec
+
+# PyInstaller
+# Usually these are created by a python script from a template
+# The actual files may have different names depending on the application
+*.manifest
+*.spec
+
+# PyInstaller
+# Usually these are created by a python script from a template
+# The actual files may have different names depending on the application
+*.manifest
+*.spec
+
+# PyInstaller
+# Usually these are created by a python script from a template
+# The actual files may have different names depending on the application
+*.manifest
+*.spec
+
+# PyInstaller
+# Usually these are created by a python script from a template
+# The actual files may have different names depending on the application
+*.manifest
+*.spec
+
+# PyInstaller
+# Usually these are created by a python script from a template
+# The actual files may have different names depending on the application
+*.manifest
+*.spec
+
+# PyInstaller
+# Usually these are created by a python script from a template
+# The actual files may have different names depending on the application
+*.manifest
+*.spec
+
+# PyInstaller
+# Usually these are
