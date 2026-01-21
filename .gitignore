@@ -111,3 +111,8 @@ docs/_build/
 
 # PyInstaller
 # Usually these are
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
